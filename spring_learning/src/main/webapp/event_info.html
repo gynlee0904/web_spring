@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<!-- 250227 -->
+<title>2025 SUMMER SUPER EVENT</title>
+<style>
+	.memo {
+		resize : none;
+	}
+</style>
+</head>
+
+<body>
+<!-- <form id="frm" method="get" action="./event_infook.do"> => 405에러(허용되지 않는 메소드)-->
+<form id="frm" method="post" action="./event_infook.do">
+	<p>[이벤트 참여]</p>
+	<!-- name명은 DB의 컬럼명과 맞춤 -->
+	고객명 : <input type="text" name="ename"> <br>
+	연락처 : <input type="text" name="etel" maxlength="11" placeholder="-는 빼고 입력하세요"> <br>
+	이메일 : <input type="text" name="email"> <br>
+	이벤트 참여 이유 : <textarea cols="50" rows="3" class="memo" name="ememo"></textarea> <br>
+	<input type="checkbox" name="info1" value="Y"> 개인정보 활용  <br>
+	<input type="checkbox" name="info2" value="Y"> 제 3자에 정보제공  <br>
+	<br>
+	<input type="button" value="이벤트 참여" onclick="eventok();">
+</form>
+<!-- <input type="button" value="정규식코드" onclick="wordck();"> -->
+</body>
+<script src="./event_info.js?v=1"></script>
+</html>
+

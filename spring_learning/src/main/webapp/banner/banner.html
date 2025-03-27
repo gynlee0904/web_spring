@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>배너등록페이지</title>
+</head>
+<body>
+<form id="frm" method="post" action="./bannerok" enctype="multipart/form-data">
+이벤트명 : <input type="text" name="bname" > 
+파일첨부 : <input type="file" name="bfile" >  <!-- 파일 name값은 dto에 쓰지않는다. 다른name으로 받음 -->
+<input type="button" value="배너등록" onclick="gopage()">
+</form>
+</body>
+<script>
+function gopage(){
+	frm.submit();
+}
+
+</script>
+</html>

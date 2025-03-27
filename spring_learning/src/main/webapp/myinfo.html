@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>개인정보 확인 페이지(API를 이용하여 데이터 출력)</title>
+</head>
+<body>
+아이디 : <div id="mid"></div> <br>
+이름 : <div id="mname"></div> <br>
+이메일 : <div id="memail"></div> <br>
+지역 : <div id="marea"></div> <br>
+연락처 : <div id="mphone"></div> <br>
+
+<br><br><br><br><br>
+***************************** <br>
+상품명 : <span id="pname"></span><span id="pico"></span> <br>
+</body>
+<script>
+//api주소, 통신방법 FE에 전달
+var http, data;
+http = new XMLHttpRequest();  
+http.onreadystatechange = function(){
+	if(http.readyState == 4 && http.status == 200){
+		data = JSON.parse(this.response);
+		//JSON.parse : API에서 받은 문자열을 배열화시켜줌 (this.response 자체는 단순 문자열)
+		//JS, JQuery에서만 사용가능
+		
+		view();
+	}
+}
+http.open("GET","./api_data3.do",false);
+http.send();
+
+function view(){
+	document.getElementById("mid").innerText = data["myinfo"][0]["id"];
+	document.getElementById("mname").innerText = data["myinfo"][0]["name"];
+	document.getElementById("memail").innerText = data["myinfo"][0]["email"];
+	document.getElementById("marea").innerText = data["myinfo"][0]["area"];
+	document.getElementById("mphone").innerText = data["myinfo"][0]["phone"];
+}
+
+var http2, data2;
+http2 = new XMLHttpRequest();  
+http2.onreadystatechange = function(){
+	if(http2.readyState == 4 && http2.status == 200){
+		data2 = JSON.parse(this.response);
+		
+		view2();
+	}
+}
+http2.open("GET","./api_data4.do",false);
+http2.send();
+
+function view2(){
+	document.getElementById("pname").innerText = data2["products"]["product_name"][0];
+	document.getElementById("pico").innerText = data2["products"]["product_ico"][0];
+
+}
+
+
+</script>
+</html>

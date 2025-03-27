@@ -1,0 +1,15 @@
+<strong>선택정보 수집</strong> 
+<ul>
+<li>
+<span style="display:block;">목적</span>
+<p>e-Click 온라인 부동산 서비스에 대한 맞춤 정보 제공, 마케팅</p>
+</li>
+<li>
+<span style="display:block;">항목</span>
+<p>이름, 이메일, 휴대폰번호, 영업장 주소</p>
+</li>
+<li>
+<span style="display:block;">보유기간</span>
+<p>회원 탈퇴시, 보유목적 달성 시(최대 2년간) 또는 정보주체가 개인정보 삭제를 요청할 경우 지체 없이 파기</p>
+</li>
+</ul>

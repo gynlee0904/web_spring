@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- mapper : SQL문법에 대한 파일 -->
+<!-- namespace="" : 패키지명.호출할 이름(닉네임) -->
+<mapper namespace="spring_learning.macbook_mapper">
+<!-- mapper 안에는 DML만 사용 가능 -->
+
+<insert id="macbook_insert">
+	insert into macbook_class values 
+	('0',#{class_part},#{class_cate},#{class_name},#{class_day},#{class_price},
+	#{class_sales},#{class_info},#{class_teacher},#{class_object},#{class_use},now())
+</insert>
+<!-- id는 아무거나 지어도 됨 (다른 태그의 아이디와 중복되면 안됨)
+	 달러를 쓰면 필드명, 테이블명, 파라미터 
+	 #은 값을 적용시킬때 사용하는 파라미터값 (?와 같은것). Mapper에서 보내는 매개변수값과 일치시킴(혹은 테이블의 컬럼값과 일치시킴)--> 
+
+<select id="macbook_select" resultType="mac_dto">
+<!-- resultType="" : select태그에서만 사용. !!!config.xml에 세팅된 typeAliases의 alias명!!! alias를 이용하여 모델DTO에 전달함. 
+	 resultType="mac_dto" : DTO로 데이터 받겠다는 뜻 . 
+	 parameterType="" : 기본은 String. 안쓰면 자료형 맞춰서 알아서 들어감. @Mapper에서 보내는 매개변수 자료형과 일치시킴. -->
+	select * from macbook_class order by midx desc
+</select>
+
+
+<!-- 과정 하나의 데이터만 출력 -->
+<select id="macbook_one" resultType="mac_dto" >
+	select * from macbook_class where midx = #{midx}
+</select>
+
+<!-- 과정 데이터 수정 -->
+<update id="macbook_modify">
+	update macbook_class set class_part=#{class_part},class_cate=#{class_cate},class_name=#{class_name},class_day=#{class_day},class_price=#{class_price},
+		class_sales=#{class_sales},class_info=#{class_info},class_teacher=#{class_teacher},class_object=#{class_object},class_use=#{class_use} 
+		where midx = #{midx}
+</update>
+</mapper>

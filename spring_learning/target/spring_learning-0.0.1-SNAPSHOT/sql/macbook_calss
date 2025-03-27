@@ -1,0 +1,20 @@
+create table macbook_class(
+	midx int unsigned auto_increment,  /*자동증가값*/
+	class_part varchar(100) not null,   /*과정구분*/
+	class_cate varchar(30) not null,  /*과정 카테고리*/
+	class_name varchar(200) not null,  /*과정 개설명*/
+	class_day int not null default '1',  /*학습일수*/
+	class_price int not null,  /*정가*/
+	class_sales int not null,  /*수강료*/
+	class_info text,  /*과정소개*/
+	class_teacher varchar(100),  /*강사명*/
+	class_object text,  /*학습목표*/
+	class_use enum('Y','N') not null default 'N',  /*오픈여부*/
+	today timestamp not null default current_timestamp,  /*생성일*/
+	primary key(midx)
+);
+
+select * from macbook_class;
+drop table macbook_class;
+select now();
+select * from macbook_class order by midx desc;

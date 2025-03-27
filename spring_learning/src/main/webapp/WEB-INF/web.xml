@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0"> -->
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_1.xsd" version="3.1">
+	<display-name>spring_learning</display-name>
+	
+	<!-- @어노테이션을 이용하여 컨트롤러를 사용할 수 있도록 설정 -->
+	<servlet>
+		<servlet-name>dispatcher</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<!-- 컨트롤러를 사용할 수 있는 옵션 -->
+			<param-value>
+<!-- 			/WEB-INF/webpage.xml -->
+			/WEB-INF/webpage2.xml
+			/WEB-INF/db_config.xml
+			</param-value>
+		</init-param>
+		
+		<!-- webpage.xml을 첫번쨰로 읽어들이도록 하는 부분 -->
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>dispatcher</servlet-name>
+		<url-pattern>/</url-pattern>
+<!-- 		<url-pattern>/*</url-pattern>  =>jsp,html단독실행을 못하게 함.do를 통해야함 -->
+	</servlet-mapping>
+	
+	<!-- utf-8로 언어셋(언어출력 한글 안깨지게 함)  -->
+	<filter>
+		<filter-name>encoding</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		
+		<!-- 기본 언어셋 설정 -->
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+		
+		<!-- 기본언어셋을 작동시키는 부분 -->
+		<init-param>
+			<param-name>forceEncoding</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+	
+	<!-- 모든 컨트롤러에 적용하는 부분 -->
+	<filter-mapping>
+		<filter-name>encoding</filter-name>
+		<url-pattern>/*</url-pattern>  <!-- 모든경로에 적용 -->
+	</filter-mapping>
+
+</web-app>

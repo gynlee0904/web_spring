@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>상담신청(cms) 페이지</title>
+</head>
+<body>
+<form id="frm" method="post" action="./cmsok.do" onsubmit="return gopage()">
+<!-- <form id="frm" method="post" action="../cmsok.do" onsubmit="return gopage()"> -->
+<!-- ../cmsok.do => macbook_cms 폴더를 벗어나서 do를 찾음-->
+
+<!-- <form id="frm" method="post" action="/cmsok.do" onsubmit="return gopage()"> -->
+<!-- /cmsok.do => 최상위디렉토리에서 do를 찾음  -->
+
+제목 : <input type="text" name="subject" > <br>
+상담자명 : <input type="text" name="cuser" > <br> 
+상담목적 : 
+
+<input type="checkbox" name="cate" value="cms1">심리상담 
+<input type="checkbox" name="cate" value="cms2">학교생활 
+<input type="checkbox" name="cate" value="cms3">가정문제 
+<input type="checkbox" name="cate" value="cms4">학업 및 진로
+<input type="checkbox" name="cate" value="cms5">대인관계  
+<br> 
+<button type="submit" > 상담신청 </button>
+<!-- <button type="button" onclick="gopage()"> 상담신청 </button> -->
+<!-- ECMA에서는 인자값 없으면 onclick="gopage" 라고 쓸수도 있음 -->
+</form>
+</body>
+
+<script>
+function gopage(){
+	return true;
+}
+
+</script>
+</html>

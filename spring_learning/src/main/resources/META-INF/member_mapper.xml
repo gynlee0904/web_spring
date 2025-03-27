@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="macbook_user">
+<select id="user_all" resultType="mem_dto">
+	select * from macbook_member order by midx desc
+</select> 
+
+<select id="search_userid" resultType="mem_dto" parameterType="Map">
+<!-- 인자값이 2개이상 처리되어야 하기떄문에 parameterType="Map"으로 써야함. parameterMap으로 쓰지않음 -->
+	select mid from macbook_member where mname=#{mname} and memail=#{memail}
+</select>
+
+
+
+<!-- 테이블이 다른 쿼리문 (macbook_cms) -->
+<insert id="cms_in" parameterType="Map">
+	insert into macbook_cms values ('0',#{subject},#{cuser},#{cate},now())
+</insert>
+
+<select id="cms_view" resultType="Map">
+<!-- resultType="String" : 하나의 컬럼값에 대해서만 반환 
+	 count, sum, max 등 사용시 쓰면 좋음
+	 단 여러개의 컬럼을 가져오는 쿼리문일 경우 첫번째 컬럼만 반환(나머지 컬럼은 로스남) -->
+<!-- resultType="Map" : DTO가 없는 상황에 사용 -->
+	select * from macbook_cms where cidx='3'
+<!-- 	select count(*) from macbook_cms where cidx='2' -->
+<!-- 	select cate from macbook_cms where cidx='3' -->
+</select>
+
+
+<insert id="banner_in" >
+	insert into macbook_banner values ('0',#{bname},#{file_orinm},#{file_renm},#{file_url},now())
+</insert>
+
+<select id="banner_all" resultType="banner_dto">
+	select * from macbook_banner order by bidx desc
+</select> 
+
+</mapper>

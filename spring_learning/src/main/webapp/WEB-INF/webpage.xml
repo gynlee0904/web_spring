@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- beans : 스프링, 스프링부트에서 사용하는 xml 귀엽당 
+	1. beans, bean 태그를 사용하여 컨트롤러 및 환경설정 
+	2. context : Spring 프레임워크의 빈에 대한 종속성을 관리하는 엔진 (패키지 그룹단위별로 핸들링) 
+	3. mvc : Spring 프레임워크의 모델, 뷰, 컨트롤러 형태의 구성 
+	
+	beans : bean태그를 활성화하는 부모태그 
+	bean : 최소단위 
+-->
+<beans xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context
+		https://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/mvc
+		https://www.springframework.org/schema/mvc/spring-mvc.xsd
+		">
+		<!-- ns:name server -->
+	<!-- bean 파트 : 가상의 컨테이너. id="가상주소" class="자바경로" -->
+<!--  	<bean id="/test.do" class="spring_learning.test"></bean>  =>bean태그 안에 다른 태그(환경설정) 넣을 수 있음 -->
+		<bean id="" class=""/>   <!-- =>bean태그 안에 다른 옵션(환경설정) 못넣음  -->
+	
+</beans>

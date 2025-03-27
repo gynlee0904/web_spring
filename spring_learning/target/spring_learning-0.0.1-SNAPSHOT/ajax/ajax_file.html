@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Ajax로 파일 로드 및 setTimeout 사용방법</title>
+<style>
+.box{
+	width : 100px;
+	height: 30px;
+	color : white;
+	background-color: black;
+	text-align: center;
+	line-height : 30px;
+	font-size : 12px;
+}
+</style>
+</head>
+<body>
+<div id="ag"></div> <br>
+<div id="ag2"></div> <br>
+<input type="button" value="실행" onclick="goPage();"> <br>
+<div class="box" id="box"></div>
+</body>
+<script>
+window.onload=function(){
+//window.onload : 페이지 실행하자마자 작동되는 스크립트 
+//txt파일 UTF-8로 바꿔야함 : 다운로드된 파일 다른이름으로 저장할때 UTF-8로 저장
+	var http = new XMLHttpRequest;  //ajax통신
+	http.open("GET","../agree1.txt",false);  //IO중 파일 로드는 GET, 파일 전송은 POST (자기 서버에서만 사용가능)
+	http.send();  //통신실행 
+	document.getElementById("ag").innerHTML = http.response;  //HTML에 내용을 출력
+	
+	
+	var http2 = new XMLHttpRequest;  //객체를 따로 만들어서 로드해야함
+	http2.open("GET","../agree2.txt",false);
+	http2.send();
+	document.getElementById("ag2").innerHTML = http2.response;
+}
+
+
+function goPage(){
+	var url = "http://naver.com";
+	//↓setTimeout()에 추가적인 이벤트가 발생하는 경우가 있을경우 사용하는 방식
+	setTimeout(function(){
+		location.href= url;
+	},5000);
+	//setTimeout(,) :시간을 로드시킴. 해당시간이 지난 후 작동되는 함수이며 페이지가 실행되면 가장 먼저 시작되는 함수  
+	//5000 : 5초 
+	//5초후에 function 작동 
+	//0 넣으면 바로 실행
+}
+// setTimeout(goPage,3000);  //3초후에 ,앞의 함수 실행
+
+
+var time = 5;
+function aaa(){
+	document.getElementById("box").innerText = "광고중"+ time + "초";
+	time--;
+	if(time>=0){
+		setTimeout(aaa,5000); //5초후 aaa함수를 실행 (광고중 time이 5초에 한번씩 줄어듦)
+	}else{
+		document.getElementById("box").innerText = "SKIP";
+	}
+}
+setTimeout(aaa,3000);  //3초후에 aaa함수를 실행 (광고중 문구가 3초후 뜸) 
+
+</script>
+</html>

@@ -1,0 +1,21 @@
+<strong>필수정보 수집</strong>
+<ul>
+<li>
+<span style="display:block;">목적</span>
+<p>회원가입, 서비스 이용을 위한 연락처</p>
+</li> 
+<li>
+<span style="display:block;">항목</span>
+<p>회원가입 <br>
+- 이름, 이메일, 휴대폰 번호 <br>
+SNS 간편가입 <br>
+- 구글 간편가입(이름, 이메일) <br>
+- 카카오 간편가입(이름, 이메일) <br>
+- 네이버 간편가입(이름, 이메일) <br>
+- 페이스북 간편가입(이름, 이메일) <br>
+- 애플 간편가입(이름, 이메일) <br></p>
+</li>
+<li><span style="display:block;">보유기간</span> 
+<p>회원 탈퇴시, 보유목적 달성 시(최대 5년간) 또는 정보주체가 개인정보 삭제를 요청할 경우 지체 없이 파기</p>
+</li>
+</ul>
