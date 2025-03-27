@@ -54,7 +54,6 @@ public class cms_controller {
 		return "load";
 	}
 	
-	
 	//cms상담신청내역 상세페이지 
 	@GetMapping("/macbook_cms/cmsview.do")
 	public String cmsview(Model m) throws Exception{
