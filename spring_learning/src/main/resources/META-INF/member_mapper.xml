@@ -34,8 +34,21 @@
 	insert into macbook_banner values ('0',#{bname},#{file_orinm},#{file_renm},#{file_url},now())
 </insert>
 
-<select id="banner_all" resultType="banner_dto">
-	select * from macbook_banner order by bidx desc
+<select id="banner_all" resultType="banner_dto" parameterType="Map">
+	select * from macbook_banner order by bidx desc limit #{start_p},#{page_ea}
 </select> 
 
+<select id="banner_total" resultType="int">
+	select count(*) as total from macbook_banner 
+</select> 
+
+<select id="banner_search" resultType="banner_dto" parameterType="String">
+	select * from macbook_banner where bname like concat('%',#{search},'%') order by bidx desc
+</select> 
+<!-- mysql, mariadb => like concat()사용 
+ 	 oracle => like '%' || #{search} || '%' 으로 검색
+ 	 mssql => like '%' + #{search} + '%' 으로 검색 -->
+ 	 
+ 	 
+ 	 
 </mapper>
