@@ -98,6 +98,44 @@ public class banner_controller {
 		return null;
 	}
 	
-	
+	//배너 삭제 
+	@PostMapping("/banner/bannerdel")
+	public String bannerdel(@RequestParam(defaultValue="", required=false)String ckdel,
+							Model m){
+//		this.callback = 0;  //필드에 있는 값으로 올라가지 않도록 메소드 안에서 초기화해줄것  
+		String msg = "";
+		if(ckdel.equals("")) {  //체크박스 체크된게 한개도 없이 날아왔을 때 
+			msg = "alert('올바른 접근이 아닙니다'); history.go(-1);";
+		}else {
+			String no[] = ckdel.split(",");
+			int w = 0;
+			while(w < no.length) {  //FE에서 체크된 값만큼 반복 
+//				this.callback += this.dao.banner_del(no[w]);  
+				//반복된 값만큼 누적시켜서 총 삭제되는 개수값을 돌려받음 => 반복문은 끝나는데 누적이 한번 더 되기 때문에 오류남 
+				//=> 조건문 한번 더 걸어줌 or 밑에서 돌아온 결과값과 no배열에 들어있는 개수비교시 this.callback에 -1 해줌 
+//				if(no[w]!=null) {
+//					this.callback += this.dao.banner_del(no[w]);  
+//				}
+				//↓이렇게 쓸 수도 있음 
+				int result = this.dao.banner_del(no[w]);
+				if(result > 1) {
+					this.callback++;
+				}
+				w++;
+			}
+			if(no.length == this.callback) {  //돌아온 결과값과 no배열에 들어있는 개수가 일치할 때 
+				msg="alert('정상적으로 삭제되었습니다'); location.href='./bannerlist';";
+				//db 데이터 삭제시 웹경로에서 이미지파일도 같이 삭제할것! (mainpage03 컨트롤러 파일삭제메소드 참고)
+				
+			}else {
+//				System.out.println("no.length"+no.length);
+//				System.out.println("this.callback"+this.callback);
+				msg = "alert('비정상적인 데이터가 확인되었습니다'); location.href='./bannerlist';";
+			}
+		}
+		m.addAttribute("msg", msg); 
+		//PrinteWriter는 가급적 사용 줄이는게 좋음 (한글깨짐방지 등 머시기 관리가 귀찮)
+		return "load";
+	}
 	
 }

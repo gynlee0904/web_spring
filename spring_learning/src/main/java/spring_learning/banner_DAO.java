@@ -31,7 +31,6 @@ public class banner_DAO {
 		int total = this.st.selectOne("macbook_user.banner_total");
 		return total;
 	}
-	
 	public List<banner_DTO> allbanner(Integer pgno) {  //Integer pgno : 컨트롤에서 사용자가 클릭한 페이지 번호를 받는 역할 
 		/* 사용자가 1 페이지 클릭 => limit 0,5
 		   사용자가 2 페이지 클릭 => limit 5,5
@@ -47,9 +46,16 @@ public class banner_DAO {
 		return all;
 	}
 
+	//배너 검색
 	public List<banner_DTO> searchbanner(String search) {
 		List<banner_DTO> all = this.st.selectList("macbook_user.banner_search", search);
 		return all;
+	}
+	
+	//배너 삭제 
+	public int banner_del(String no) {
+		int result = this.st.delete("macbook_user.banner_del", no);
+		return result;
 	}
 
 }

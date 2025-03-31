@@ -49,6 +49,9 @@
  	 oracle => like '%' || #{search} || '%' 으로 검색
  	 mssql => like '%' + #{search} + '%' 으로 검색 -->
  	 
- 	 
+<!-- 배너 고유값으로 데이터 삭제 처리 -->
+<delete id="banner_del">
+	delete from macbook_banner where bidx=#{no}
+</delete>	 
  	 
 </mapper>

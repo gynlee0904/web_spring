@@ -89,7 +89,7 @@ public class mainpage03 {
 	 */
 		String url = req.getServletContext().getRealPath("/file_upload/");
 		File f = new File(url + fnm);
-		f.delete();  //파일삭제
+		f.delete();  //웹경로에서 실제 파일삭제
 		
 		//JS메세지를 전달되는 jsp페이지로 전달
 		String msg = "alert('파일삭제 완료');"+"location.href='./filelist.do';";
