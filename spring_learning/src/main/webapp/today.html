@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>오늘 일자 체크 및 현재시간</title>
+</head>
+<body>
+날짜 선택 : <input type="date"  name="rdate">
+<select name="rtime">
+	<option value="">시간선택</option>
+	<option value="09">09:00</option>
+	<option value="11">11:00</option>
+	<option value="13">13:00</option>
+	<option value="15">15:00</option>
+	<option value="17">17:00</option>
+</select> 
+<input type="button" value="예매" onclick="datecheck();">
+</body>
+<script>
+function datecheck(){
+// 	var day = new Date();  //오늘 날짜 가져옴 
+// 	var sdate = frm.rdate.value.replaceAll("-","");  //사용자가 선택한 날짜  2025-04-02 => 20250402 
+// 	var edate = day.getFullYear() +""+ day.getMonth()+1 +""+ day.getDate();
+	//day.getMonth()+1 : 월이 0부터 시작되기 떄문에 1 더해줘야 함 
+	//숫자이기 떄문에 + 로 붙이면 합산되어짐. 사이에 ""를 넣어서 문자처럼 합쳐지게 함 
+	
+	var edate = frm.rdate.value;
+	var date = new Date();
+	var sdate = date.toISOString().split('T')[0];
+	
+	if(edate < sdate){
+		alert("해당날짜 선택을 잘못하셨습니다.")
+		
+	}else{
+// 		console.log(date.getTime()); 
+		//date.getTime() => 현재시간을 출력 
+		//date.getHours() => 현재시간을 출력
+		
+		var t = date.getHours()+""+date.getMinutes().padStart(2,"0");  
+		//.padStart(2,"0") => 16:07분이면 1607로 출력  
+		//.getHours() : 현재 시간  .getMinutes() : 현재 분 
+		var ut = frm.rtime.value +""+ 00;  //분까지 비교하기 위해 ""+00 붙여줌 
+		//사용자가 선택한 시간 
+		
+		if(t > ut){
+			alert("선택한 시간은 예매가 끝났습니다.")
+			
+		}else {
+			alert("예매하시겠습니까?")
+			
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+}
+
+
+
+
+
+
+</script>
+</html>
